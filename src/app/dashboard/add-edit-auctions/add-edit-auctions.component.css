@@ -1,0 +1,40 @@
+.card-container {
+  width: 600px;
+  margin: auto;
+}
+
+.input-container mat-form-field {
+  width: 100%; 
+}
+
+.input-container mat-form-field + mat-form-field {
+  margin-left: 8px;
+}
+
+.button-container {
+  margin-top: 16px; 
+  display: grid;
+  grid-gap: 8px; 
+}
+
+.amount-align {
+  text-align: right;
+}
+
+input.amount-align::-webkit-outer-spin-button,
+input.amount-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+input.amount-align {
+  -moz-appearance: textfield;
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+

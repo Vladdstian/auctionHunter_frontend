@@ -1,0 +1,97 @@
+<div>
+  @switch (authType) {
+    @case ('login') {
+    <mat-card class="card-container">
+        <mat-card-content>
+            <div class="input-container">
+                <mat-form-field class="input-field">
+                  <mat-label>Enter your email</mat-label>
+                  <input matInput placeholder="johndoe@example.com" [formControl]="email" required>
+                  @if (email.invalid) {
+                    <mat-error>{{getEmailErrorMessage()}}</mat-error>
+                  }
+                </mat-form-field>
+            </div>
+
+            <div class="input-container">
+              <mat-form-field class="input-field">
+                <mat-label>Enter your password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password">
+                @if (retype_password.invalid) {
+                  <mat-error>{{getPasswordErrorMessage()}}</mat-error>
+                }
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+              </mat-form-field>
+            </div>
+
+            <div class="button-container">
+              <button mat-raised-button color="primary">Log In</button>
+              <button mat-button color="primary" (click)="onChangeAuthType()">Create an account</button>
+            </div>
+
+        </mat-card-content>
+    </mat-card>
+  }
+  
+  @case ('register') {
+    <mat-card class="card-container">
+        <mat-card-content>
+
+            <div class="input-container">
+                <mat-form-field class="input-field">
+                    <mat-label>First name</mat-label>
+                    <input matInput placeholder="John" [formControl]="first_name">
+                    @if (first_name.invalid) {
+                        <mat-error>{{getNameErrorMessage()}}</mat-error>
+                    }
+                </mat-form-field>
+            </div>
+
+            <div class="input-container">
+                <mat-form-field class="input-field">
+                  <mat-label>Enter your email</mat-label>
+                  <input matInput placeholder="johndoe@example.com" [formControl]="email" required>
+                  @if (email.invalid) {
+                    <mat-error>{{getEmailErrorMessage()}}</mat-error>
+                  }
+                </mat-form-field>
+            </div>
+
+            <div class="input-container">
+              <mat-form-field class="input-field">
+                <mat-label>Enter your password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password">
+                @if (retype_password.invalid) {
+                    <mat-error>{{getPasswordErrorMessage()}}</mat-error>
+                }
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+              </mat-form-field>
+            </div>
+
+            <div class="input-container">
+                <mat-form-field class="input-field">
+                  <mat-label>Retype your password</mat-label>
+                  <input matInput [type]="hide ? 'password' : 'text'" [formControl]="retype_password">
+                  @if (retype_password.invalid) {
+                    <mat-error>{{getPasswordErrorMessage()}}</mat-error>
+                  }
+                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                </mat-form-field>
+              </div>
+
+            <div class="button-container">
+              <button mat-raised-button color="primary">Register Account</button>
+              <button mat-button color="primary" (click)="onChangeAuthType()">Back to Log In</button>
+            </div>
+
+        </mat-card-content>
+    </mat-card>
+    }
+  }
+</div>

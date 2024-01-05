@@ -1,0 +1,111 @@
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* HTML and Body Layout */
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures body takes at least the viewport height */
+  font-family: Arial, sans-serif; /* Example font, change as needed */
+}
+
+/* Header Styles */
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8f8f8;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Ensure header is above other content */
+}
+
+/* Logo Section */
+.logo-section {
+  /* Add styles if needed, e.g., padding or logo size */
+}
+
+/* Navigation Section */
+.nav-section {
+  display: flex;
+  gap: 20px;
+}
+
+/* Dropdown Styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.my-auctions-dropdown:hover .my-auctions-dropdown-content,
+.account-dropdown:hover .account-dropdown-content {
+  display: block;
+}
+
+/* Main Content */
+.main-content {
+  flex-grow: 1; /* Allows the content to expand */
+  padding-top: 60px; /* Adjust based on header height */
+  overflow-y: auto; /* Scrollable content area */
+  padding-bottom: 20px; /* Space for footer */
+}
+
+/* Footer Styles */
+.app-footer {
+  background-color: #f8f8f8;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  width: 100%;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+}
+
+.footer-section h4 {
+  margin-bottom: 10px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+  margin-bottom: 5px;
+} 

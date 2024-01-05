@@ -1,0 +1,15 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <div class="avatar-container">
+      <div mat-card-avatar class="example-header-image"></div>
+    </div>
+    <div class="title-subtitle-container">
+      <mat-card-title>Shiba Inu</mat-card-title>
+      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    </div>
+    <div class="heart-icon-container">
+      <mat-icon (click)="toggleFavorite()" [class.filled]="isFavorite">favorite</mat-icon>
+    </div>
+  </mat-card-header>
+  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+</mat-card>

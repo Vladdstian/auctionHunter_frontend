@@ -1,0 +1,85 @@
+<mat-card class="card-container">
+    <mat-card-content>
+
+        <div class="input-container">
+            <mat-form-field class="input-field">
+                <mat-label>Title</mat-label>
+                <input matInput placeholder="My auction" [formControl]="title">
+                <!-- @if (title.invalid) {
+                    <mat-error>{{getNameErrorMessage()}}</mat-error>
+                } -->
+            </mat-form-field>
+        </div>
+
+        <div class="input-container">
+            <mat-form-field class="input-field">
+                <mat-label>Description</mat-label>
+                <textarea matInput placeholder="My auction description" [formControl]="description"></textarea>
+                <!-- @if (title.invalid) {
+                    <mat-error>{{getNameErrorMessage()}}</mat-error>
+                } -->
+            </mat-form-field>
+        </div>
+
+        <div class="input-container">
+            <mat-form-field class="input-field" floatLabel="always">
+                <mat-label>Minimum price</mat-label>
+                <input matInput type="number" class="amount-align" placeholder="0" [formControl]="minimumAmount">
+                <span matTextPrefix>$&nbsp;</span>
+                <span matTextSuffix>.00</span>
+                <!-- @if (title.invalid) {
+                    <mat-error>{{getNameErrorMessage()}}</mat-error>
+                } -->
+            </mat-form-field>
+        </div>
+
+        <div class="input-container">
+            <mat-form-field class="input-field" floatLabel="always">
+                <mat-label>Buy now</mat-label>
+                <input matInput type="number" class="amount-align" placeholder="0" [formControl]="buyNowAmount">
+                <span matTextPrefix>$&nbsp;</span>
+                <span matTextSuffix>.00</span>
+                <!-- @if (title.invalid) {
+                    <mat-error>{{getNameErrorMessage()}}</mat-error>
+                } -->
+            </mat-form-field>
+        </div>
+
+        <div class="input-container">
+            <mat-form-field class="input-field">
+                <mat-label>Auction ending date</mat-label>
+                <input matInput [matDatepicker]="dp3" [formControl]="endDate" readonly>
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="dp3"></mat-datepicker-toggle>
+                <mat-datepicker #dp3 ></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <div class="button-container">
+            <button mat-flat-button (click)="fileInput.click()">Choose Photos</button>
+            <input type="file" #fileInput (change)="onFileSelected($event)" hidden multiple>
+        </div>
+        
+        <div class="photo-url-container">
+            @if (selectedFiles.length > 0) {
+                <mat-list>
+                    @for (file of selectedFiles; track file; let i = $index) {
+                    <mat-list-item class="file-item">
+                        {{ file }}
+                        <button mat-icon-button (click)="removeFile(i)">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                    }
+                </mat-list>
+              }
+        </div>
+
+        <div class="button-container">
+          <button mat-raised-button color="primary" (click)="onCreate()">Create auction</button>
+          <button mat-button color="primary">Back to home</button>
+        </div>
+
+    </mat-card-content>
+</mat-card>

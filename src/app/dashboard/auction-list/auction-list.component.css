@@ -1,0 +1,47 @@
+.example-card {
+    max-width: 250px;
+  }
+  
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+  
+  mat-card-header {
+    display: flex;
+    align-items: center;
+  }
+  
+  .avatar-container {
+    /* Ensure the avatar takes minimal space and aligns to the left */
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center; /* Center align the avatar vertically */
+  }
+  
+  .title-subtitle-container {
+    /* Align the title and subtitle to the left, directly beside the avatar */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center align vertically */
+    flex-grow: 1; /* Adjusted to take available space */
+    text-align: left; /* Align text to the left */
+    padding-left: 10px; /* Optional: Add some space between avatar and text */
+  }
+  
+  .heart-icon-container {
+    /* Align the heart icon to the right */
+    flex-grow: 1;
+    display: flex;
+    align-items: center; /* Center align the heart icon vertically */
+    justify-content: flex-end;
+  }
+
+  mat-icon {
+    cursor: pointer;
+  }
+
+  mat-icon.filled {
+    color: red;
+  }
+  
