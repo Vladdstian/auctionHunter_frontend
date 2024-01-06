@@ -36,7 +36,7 @@ export class AuthComponent {
   retype_password = new FormControl('', [Validators.required, Validators.min(8), this.passwordMatch]);
   first_name = new FormControl('', [Validators.required, Validators.min(1)]);
 
-  authType:string='register';
+  authType:string='login';
 
   getEmailErrorMessage() {
     
