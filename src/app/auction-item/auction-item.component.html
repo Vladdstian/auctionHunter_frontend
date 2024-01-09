@@ -1,0 +1,28 @@
+<mat-card>
+  <img mat-card-image src="https://picsum.photos/200/300" alt="Auction Image" />
+  <mat-card-content>
+    <a
+      href="link-to-auction"
+      style="text-decoration: underline; font-style: italic"
+    >
+      {{ title }}
+    </a>
+    <p>Current price: {{ price }} $</p>
+    <p>Ending date: {{ endDate }} $</p>
+  </mat-card-content>
+  <mat-card-actions>
+    @if (isUserOwner) {
+    <ng-container>
+      <button mat-raised-button color="primary" (click)="onEdit()">Edit</button>
+      <button mat-button (click)="onDelete()">Delete</button>
+    </ng-container>
+    } @else {
+    <ng-template>
+      <button mat-raised-button color="primary" (click)="bidNow()">
+        Bid Now
+      </button>
+      <mat-icon (click)="toggleFavorite()"> favorite </mat-icon>
+    </ng-template>
+    }
+  </mat-card-actions>
+</mat-card>

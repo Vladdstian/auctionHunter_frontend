@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { AuthComponent } from './auth/auth.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { AuctionService } from './services/auction.service';
 
 export const routes: Routes = [
     { path: 'auth',component: AuthComponent },

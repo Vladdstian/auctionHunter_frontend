@@ -1,62 +1,63 @@
-.auction-card {
-    position: relative;
-    max-width: 200px;
-    margin: 15px;
-}
-  
-.example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
+.list-container {
+    width: 100%; 
 }
 
-mat-card-header {
-    display: flex;
-    align-items: center;
-}
-
-.avatar-container {
-    flex: 0 0 auto;
-    display: flex;
-    align-items: center;
-}
-
-.title-subtitle-container {
+.auctions-row {
     display: flex;
     flex-direction: column;
-    justify-content: center; 
-    flex-grow: 1; 
-    text-align: left; 
-    padding-left: 10px; 
+    align-items: center; 
+}
+
+.auctions-title {
+    text-align: center;
+    margin: 1px;
+    padding-top: 10px;
+}
+
+.auctions-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.cards-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  justify-content: flex-start; 
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.card-item {
+    display: flex; 
+    flex-direction: column;
+    flex: 0 0 auto;
+    margin:10px;
+    width: 200px; 
+}
+
+mat-card img {
+  width: auto; 
+  height: 220px; 
+  object-fit: cover;
+}
+
+mat-card-content {
+  padding: 10px; 
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px; 
 }
 
 .heart-icon-container {
-    flex-grow: 1;
-    display: flex;
-    align-items: center; 
-    justify-content: flex-end;
+  cursor: pointer; 
 }
 
-mat-icon {
-    cursor: pointer;
+button.mat-icon-button {
+  margin: 0 5px; 
 }
-
-mat-icon.filled {
-    color: red;
-}
-
-.card-actions {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-around; /* Adjust button spacing */
-    padding: 10px 0; /* Padding at top and bottom */
-    background-color: rgba(255, 255, 255, 0.9); /* Optional: Semi-transparent background */
-}
-
-mat-card-image {
-    display: block;
-    width: 100%;
-}
-  

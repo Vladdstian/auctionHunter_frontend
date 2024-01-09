@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import {
   FormControl,
@@ -12,7 +12,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from '../services/auth.service';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -25,13 +26,15 @@ import { AuthService } from '../services/auth.service';
     ReactiveFormsModule,
     MatIconModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   templateUrl: './auth.component.html',
   styleUrl: './auth.component.css',
-  providers: [AuthService]
+  providers: [AuthService],
 })
 export class AuthComponent {
+  SnackbarDurationInSeconds = 3;
+
   hide = true;
 
   email = new FormControl('', [Validators.required, Validators.email]);
@@ -46,13 +49,16 @@ export class AuthComponent {
     Validators.min(8),
     this.passwordMatch,
   ]);
+
   firstName = new FormControl('', [Validators.required, Validators.min(1)]);
 
   authType: string = 'login';
 
-  constructor(private authService: AuthService) {
-    
-  }
+  constructor(
+    private authService: AuthService,
+    private _snackBar: MatSnackBar,
+    private router: Router
+  ) {}
 
   getEmailErrorMessage() {
     if (this.email.hasError('required')) {
@@ -90,15 +96,58 @@ export class AuthComponent {
   onLogin() {
     let email = this.email.getRawValue()!;
     let password = this.password.getRawValue()!;
-    console.log(email, password)
-    this.authService.login(email, password);
+    console.log(email, password);
+    this.authService.login(email, password).subscribe({
+      next: (response) => {
+        this.openSnackBar('Login Successful');
+        // TODO: to send user id in order to get the auction lists it has
+        // this.router.navigate(['/', 'dashboard']);
+        this.router.navigateByUrl("/dashboard")
+      },
+      error: (error) => {
+        this.openSnackBar('Login Failed: ' + error.message);
+      },
+    });
   }
 
   onRegister() {
     let firstName = this.firstName.getRawValue()!;
     let email = this.email.getRawValue()!;
     let password = this.password.getRawValue()!;
-  
-    this.authService.register(firstName, email, password);
+    let retype_password = this.retype_password.getRawValue()!;
+
+    this.authService.register(firstName, email, password, retype_password).subscribe({
+      next: (response) => {
+        this.openSnackBar('Registration Successful');
+      },
+      error: (error) => {
+        this.openSnackBar('Registration Failed: ' + error.message);
+      },
+    });
+  }
+
+  openSnackBar(message: string) {
+    var action = '';
+    this._snackBar.open(message, action, {
+      duration: this.SnackbarDurationInSeconds * 1000,
+    });
+  }
+
+  isFormValid(): boolean {
+    if (this.email.value === 'admin') {
+      return this.password.valid; // Only check password for admin
+    }
+
+    if (this.authType === 'login') {
+      return this.email.valid && this.password.valid;
+    } else if (this.authType === 'register') {
+      return (
+        this.email.valid &&
+        this.password.valid &&
+        this.retype_password.valid &&
+        this.firstName.valid
+      );
+    }
+    return false;
   }
 }
