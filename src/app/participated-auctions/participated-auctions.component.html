@@ -1,1 +1,15 @@
-<p>participated-auctions works!</p>
+<h2 class="auctions-title">Participated Auctions</h2>
+<div class="cards-container">
+  @for (auction of auctions; track $index) {
+  <div class="card-item">
+    <app-auction-item
+      [auctionId]="auction.id"
+      [title]="auction.title"
+      [price]="auction.price"
+      [endDate]="auction.endDate"
+      [imageUrl]="auction.imageUrl"
+    >
+    </app-auction-item>
+  </div>
+  }
+</div>

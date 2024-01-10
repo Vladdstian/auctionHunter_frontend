@@ -12,6 +12,7 @@
     text-align: center;
     margin: 1px;
     padding-top: 10px;
+    cursor: pointer; 
 }
 
 .auctions-container {
