@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import {
   FormControl,
@@ -102,7 +102,7 @@ export class AuthComponent {
         this.openSnackBar('Login Successful');
         // TODO: to send user id in order to get the auction lists it has
         // this.router.navigate(['/', 'dashboard']);
-        this.router.navigateByUrl("/dashboard")
+        this.router.navigateByUrl('/dashboard');
       },
       error: (error) => {
         this.openSnackBar('Login Failed: ' + error.message);
@@ -116,14 +116,16 @@ export class AuthComponent {
     let password = this.password.getRawValue()!;
     let retype_password = this.retype_password.getRawValue()!;
 
-    this.authService.register(firstName, email, password, retype_password).subscribe({
-      next: (response) => {
-        this.openSnackBar('Registration Successful');
-      },
-      error: (error) => {
-        this.openSnackBar('Registration Failed: ' + error.message);
-      },
-    });
+    this.authService
+      .register(firstName, email, password, retype_password)
+      .subscribe({
+        next: (response) => {
+          this.openSnackBar('Registration Successful');
+        },
+        error: (error) => {
+          this.openSnackBar('Registration Failed: ' + error.message);
+        },
+      });
   }
 
   openSnackBar(message: string) {

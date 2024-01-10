@@ -16,13 +16,13 @@ import { Subscription } from 'rxjs';
 })
 export class AuctionItemComponent implements OnInit {
   @Input() auctionId!: number;
-  title!: string;
-  price!: number;
-  endDate!: Date;
+  @Input() title!: string;
+  @Input() price!: number;
+  @Input() endDate: any | null = null;
+  @Input() imageUrl!: string;
+  @Input() userInfo: any | null = null;
 
-  userInfo!: any;
-  isUserLoggedIn!: boolean;
-  isUserOwner!: boolean;
+  isUserOwner: boolean = false;
 
   private updateSubscription!: Subscription;
 
@@ -35,24 +35,6 @@ export class AuctionItemComponent implements OnInit {
   ngOnInit(): void {
     const userInfo = this.authService.getUserInfo();
     this.checkIfUserIsOwner();
-
-    if (this.auctionId) {
-      this.auctionService.pollAuction(this.auctionId, 3000).subscribe({
-        next: (auction) => {
-          this.title = auction.title;
-          this.price = auction.price;
-          this.endDate = new Date(auction.endDate);
-        },
-        error: (error) => {
-          // Handle any errors
-          console.error('Error fetching auction details:', error);
-        },
-        complete: () => {
-          // Handle completion
-          console.log('Auction polling completed');
-        },
-      });
-    }
   }
 
   ngOnDestroy(): void {
@@ -65,7 +47,7 @@ export class AuctionItemComponent implements OnInit {
   }
 
   toggleFavorite() {
-    if (this.isUserLoggedIn) {
+    if (this.userInfo) {
       // Logic to add/remove from favorites
     } else {
       this.router.navigate(['/login']);
@@ -73,7 +55,7 @@ export class AuctionItemComponent implements OnInit {
   }
 
   bidNow() {
-    if (this.isUserLoggedIn) {
+    if (this.userInfo) {
       // Logic to place a bid
     } else {
       this.router.navigate(['/login']);

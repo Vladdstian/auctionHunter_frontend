@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AddEditAuctionsComponent } from './add-edit-auctions/add-edit-auctions.component';
 import { AuctionListComponent } from './auction-list/auction-list.component';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,6 +10,7 @@ import { AuctionListComponent } from './auction-list/auction-list.component';
     AddEditAuctionsComponent,
     AuctionListComponent
   ],
+  providers: [AuthService],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })

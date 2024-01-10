@@ -1,151 +1,85 @@
-<!-- <div class="container-fluid">
-  @if (UserCreatedAuctionList.length > 0) {
-    <div class="row flex-row flex-nowrap">
-      @for (auction of UserCreatedAuctionList; let i = $index; track auction.price) {
-        <div class="col">
-          <mat-card class="auction-card mx-2">
-            <mat-card-header>
-              <div class="avatar-container">
-                <div mat-card-avatar class="example-header-image"></div>
-              </div>
-              <div class="title-subtitle-container">
-                <mat-card-title>{{ auction.title }}</mat-card-title>
-                <mat-card-subtitle
-                  >Current price: {{ auction.price }} RON</mat-card-subtitle
-                >
-              </div>
-              <div class="heart-icon-container">
-                <mat-icon
-                  (click)="toggleFavorite(i)"
-                  [class.filled]="auction.isFavorite"
-                  >favorite</mat-icon
-                >
-              </div>
-            </mat-card-header>
-            <img
-              mat-card-image
-              src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-              alt="Photo of a Shiba Inu"
-            />
-            <div class="card-actions">
-              <button mat-button disabled>{{ auction.price }} RON</button>
-              <button
-                mat-raised-button
-                (click)="onBid(auction, getNextBidPrice(auction.price))"
-              >
-                Bid {{ getNextBidPrice(auction.price) }} RON
-              </button>
-            </div>
-          </mat-card>
-        </div>
-        }
-      </div>
-      <button (click)="scrollRight('created')" class="btn btn-secondary ms-2">
-        ›
-      </button>
-  }
-</div>   -->
-
-<!-- --------------- -->
-
 <div class="list-container">
-
+  <!-- My Auctions -->
   <div class="auctions-row">
     <h2 class="auctions-title">My Auctions</h2>
     <div class="auctions-container">
-      <button mat-icon-button (click)="scrollLeftCreated()">
+      <button mat-icon-button (click)="scrollLeft('created')">
         <mat-icon>chevron_left</mat-icon>
       </button>
 
       <div class="cards-container">
         @for (auction of displayUserCreatedAuctionList; track $index) {
           <div class="card-item">
-            <mat-card>
-              <img mat-card-image src="https://picsum.photos/200/300" alt="Auction Image">
-              <mat-card-content>
-                <a href="link-to-auction" style="text-decoration: underline; font-style: italic;">
-                  {{auction.title}}
-                </a>
-                <p>Current price: {{ auction.price }} $</p>
-              </mat-card-content>
-              <mat-card-actions>
-                <button mat-raised-button color="primary">Edit</button>
-                <button mat-button>Delete</button>
-              </mat-card-actions>
-            </mat-card>
+            <app-auction-item
+              [auctionId]="auction.id"
+              [title]="auction.title"
+              [price]="auction.price"
+              [endDate]="auction.endDate"
+              [imageUrl]="auction.imageUrl">
+            </app-auction-item>
           </div>
         }
       </div>
 
-      <button mat-icon-button (click)="scrollRightCreated()">
+      <button mat-icon-button (click)="scrollRight('created')">
         <mat-icon>chevron_right</mat-icon>
       </button>
     </div>
   </div>
   <mat-divider></mat-divider>
-<!-- --------------------------------------------------------------- -->
+
+  <!-- Participated Auctions -->
   <div class="auctions-row">
     <h2 class="auctions-title">Participated Auctions</h2>
     <div class="auctions-container">
-      <button mat-icon-button (click)="scrollLeftParticipated()">
+      <button mat-icon-button (click)="scrollLeft('participated')">
         <mat-icon>chevron_left</mat-icon>
       </button>
 
       <div class="cards-container">
         @for (auction of displayUserParticipatedAuctionList; track $index) {
           <div class="card-item">
-            <mat-card>
-              <img mat-card-image src="https://picsum.photos/200/300" alt="Auction Image">
-              <mat-card-content>
-                <a href="link-to-auction" style="text-decoration: underline; font-style: italic;">
-                  {{auction.title}}
-                </a>
-                <p>Current price: {{ auction.price }} $</p>
-              </mat-card-content>
-              <mat-card-actions>
-                <button mat-raised-button color="primary">Edit</button>
-                <button mat-button>Delete</button>
-              </mat-card-actions>
-            </mat-card>
+            <app-auction-item
+              [auctionId]="auction.id"
+              [title]="auction.title"
+              [price]="auction.price"
+              [endDate]="auction.endDate"
+              [imageUrl]="auction.imageUrl">
+            </app-auction-item>
           </div>
         }
       </div>
 
-      <button mat-icon-button (click)="scrollRightParticipated()">
+      <button mat-icon-button (click)="scrollRight('participated')">
         <mat-icon>chevron_right</mat-icon>
       </button>
     </div>
   </div>
   <mat-divider></mat-divider>
-<!-- --------------------------------------------------------------- -->
+
+  <!-- Favourites -->
   <div class="auctions-row">
     <h2 class="auctions-title">Favourites</h2>
     <div class="auctions-container">
-      <button mat-icon-button (click)="scrollLeftFavourites()">
+      <button mat-icon-button (click)="scrollLeft('favourites')">
         <mat-icon>chevron_left</mat-icon>
       </button>
 
       <div class="cards-container">
         @for (auction of displayUserFavouritesAuctionList; track $index) {
           <div class="card-item">
-            <mat-card>
-              <img mat-card-image src="https://picsum.photos/200/300" alt="Auction Image">
-              <mat-card-content>
-                <a href="link-to-auction" style="text-decoration: underline; font-style: italic;">
-                  {{auction.title}}
-                </a>
-                <p>Current price: {{ auction.price }} $</p>
-              </mat-card-content>
-              <mat-card-actions>
-                <button mat-raised-button color="primary">Edit</button>
-                <button mat-button>Delete</button>
-              </mat-card-actions>
-            </mat-card>
+            <app-auction-item
+              [auctionId]="auction.id"
+              [title]="auction.title"
+              [price]="auction.price"
+              [endDate]="auction.endDate"
+              [imageUrl]="auction.imageUrl">
+            </app-auction-item>
           </div>
         }
       </div>
 
-      <button mat-icon-button (click)="scrollRightFavourites()">
+      <button mat-icon-button (click)="scrollRight('favourites')">
         <mat-icon>chevron_right</mat-icon>
       </button>
     </div>

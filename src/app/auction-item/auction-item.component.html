@@ -8,7 +8,9 @@
       {{ title }}
     </a>
     <p>Current price: {{ price }} $</p>
-    <p>Ending date: {{ endDate }} $</p>
+    @if (endDate) {
+      <p>Ending date: {{ endDate }} </p>
+    }
   </mat-card-content>
   <mat-card-actions>
     @if (isUserOwner) {
@@ -16,13 +18,14 @@
       <button mat-raised-button color="primary" (click)="onEdit()">Edit</button>
       <button mat-button (click)="onDelete()">Delete</button>
     </ng-container>
-    } @else {
-    <ng-template>
-      <button mat-raised-button color="primary" (click)="bidNow()">
-        Bid Now
-      </button>
+    } 
+
+    @if(!isUserOwner) {
+    <ng-container>
+      <button mat-raised-button color="primary" (click)="bidNow()">Bid Now</button>
       <mat-icon (click)="toggleFavorite()"> favorite </mat-icon>
-    </ng-template>
+    </ng-container>
     }
+
   </mat-card-actions>
 </mat-card>
