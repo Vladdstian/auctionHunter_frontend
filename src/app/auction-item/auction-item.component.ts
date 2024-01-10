@@ -38,7 +38,9 @@ export class AuctionItemComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    this.updateSubscription.unsubscribe();
+    if (this.updateSubscription) {
+      this.updateSubscription.unsubscribe();
+    }
   }
 
   checkIfUserIsOwner() {

@@ -1,0 +1,63 @@
+.list-container {
+    width: 100%; 
+}
+
+.auctions-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.auctions-title {
+    text-align: center;
+    margin: 1px;
+    padding-top: 10px;
+}
+
+.auctions-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.cards-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  justify-content: flex-start; 
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.card-item {
+    display: flex; 
+    flex-direction: column;
+    flex: 0 0 auto;
+    margin:10px;
+    width: 200px; 
+}
+
+mat-card img {
+  width: auto; 
+  height: 220px; 
+  object-fit: cover;
+}
+
+mat-card-content {
+  padding: 10px; 
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px; 
+}
+
+.heart-icon-container {
+  cursor: pointer; 
+}
+
+button.mat-icon-button {
+  margin: 0 5px; 
+}

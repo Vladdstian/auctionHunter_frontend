@@ -15,8 +15,8 @@ export class AuctionService {
     this.readAuctions();
   }
 
-  getAuctionList() {
-    return this.auctionObservable.asObservable();
+  getAuctionList(): Observable<any[]> { // Replace 'any' with your Auction model type
+    return this.httpClient.get<any[]>('/api/auctions');
   }
 
   createAuction(auction: any) {
