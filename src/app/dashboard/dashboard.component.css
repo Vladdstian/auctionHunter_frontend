@@ -62,3 +62,21 @@ mat-card-actions {
 button.mat-icon-button {
   margin: 0 5px; 
 }
+
+.create-auction-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  margin: 40px;
+}
+
+.empty-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+
+}

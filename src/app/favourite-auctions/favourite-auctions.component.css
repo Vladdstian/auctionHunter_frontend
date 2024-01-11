@@ -1,11 +1,11 @@
 .list-container {
-  width: 100%; 
+  width: 100%;
 }
 
 .auctions-row {
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
 }
 
 .auctions-title {
@@ -21,49 +21,50 @@
 }
 
 .cards-container {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-gap: 16px;
-margin-bottom: 10px;
-width: 100%;
-padding: 10px; /* Optional padding */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 10px; /* Optional padding */
+  padding-right: 30px;
 }
 
 .card-item {
-  display: flex; 
+  display: flex;
   flex-direction: column;
   margin: 10px;
   width: 100%; /* Adjust if necessary */
 }
 
 mat-card img {
-width: auto; 
-height: 220px; 
-object-fit: cover;
+  width: auto;
+  height: 220px;
+  object-fit: cover;
 }
 
 mat-card-content {
-padding: 10px; 
+  padding: 10px;
 }
 
 mat-card-actions {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 0 10px; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
 }
 
 .heart-icon-container {
-cursor: pointer; 
+  cursor: pointer;
 }
 
 button.mat-icon-button {
-margin: 0 5px; 
+  margin: 0 5px;
 }
 
 /* Responsive adjustments */
 @media (min-width: 768px) {
-.cards-container {
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-}
+  .cards-container {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
 }

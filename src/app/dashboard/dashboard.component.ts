@@ -125,4 +125,13 @@ export class DashboardComponent implements OnInit {
     }
   }
   
+  areAllListsEmpty(): boolean {
+    return this.displayUserCreatedAuctionList.length === 0 &&
+           this.displayUserParticipatedAuctionList.length === 0 &&
+           this.displayUserFavouritesAuctionList.length === 0;
+  }
+
+  navigateToCreateAuction() {
+    this.router.navigate(['/add']);
+  }
 }
