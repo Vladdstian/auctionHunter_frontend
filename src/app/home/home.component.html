@@ -7,13 +7,13 @@
     <div class="promoted-cards-container">
       @for (auction of displayPromotedAuctionList; track $index) {
       <div class="card-item">
-        <span class="star-icon">★</span>
         <app-auction-item
           [auctionId]="auction.id"
           [title]="auction.title"
           [price]="auction.price"
           [endDate]="auction.endDate"
           [imageUrl]="auction.imageUrl"
+          [isPromoted]="true"
         >
         </app-auction-item>
       </div>

@@ -42,7 +42,7 @@ import { AuctionService } from '../services/auction.service';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit{
   auctions: any[] = [];
   userInfo: any;
   PromotedAuctionsList: any[] = [];
@@ -82,8 +82,9 @@ export class HomeComponent {
   }
 
   ngOnInit(): void {
-    this.loadAuctions();
     this.updateCardsPerView();
+    this.loadAuctions();
+    this.updateDisplayLists(); 
   }
 
   loadAuctions(): void {

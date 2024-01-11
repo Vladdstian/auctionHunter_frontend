@@ -22,21 +22,22 @@
 
 .cards-container {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min-content, 200px)); 
+  gap: 24px; 
   justify-content: center;
   align-items: center;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 16px;
   margin-bottom: 10px;
   width: 100%;
-  padding: 10px; 
-  padding-right: 30px;
+  padding: 0 7%; 
+  margin-top: 5px;
 }
 
 .card-item {
   display: flex;
   flex-direction: column;
   margin: 10px;
-  width: 100%; /* Adjust if necessary */
+  width: 100%;
+  max-width: 200px; 
 }
 
 mat-card img {
@@ -67,13 +68,14 @@ button.mat-icon-button {
 /* Responsive adjustments */
 @media (min-width: 768px) {
   .cards-container {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min-content, 200px));
   }
   .promoted-cards-container .card-item {
     width: 150px; /* Adjust width for smaller screens */
     height: 225px; /* Adjust height accordingly */
   }
 }
+
 .promoted-auctions-row {
   display: flex;
   flex-direction: column;
@@ -90,6 +92,7 @@ button.mat-icon-button {
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 
 .promoted-cards-container {
@@ -99,6 +102,8 @@ button.mat-icon-button {
   justify-content: flex-start;
   align-items: center;
   margin-bottom: 10px;
+  min-height: 400px;
+  padding-bottom: 60px;
 }
 
 .promoted-cards-container .card-item {
@@ -106,13 +111,4 @@ button.mat-icon-button {
   width: 200px; 
   height: 250px;
   flex-shrink: 0;
-}
-.star-icon {
-  position: absolute; /* Position relative to the card-item */
-  top: 10px; /* Distance from the top of the card */
-  right: 10px; /* Distance from the right of the card */
-  color: gold; /* Color of the star */
-  font-size: 24px; /* Size of the star */
-  cursor: pointer; /* Change cursor on hover */
-  z-index: 1; /* Ensure it's above other content */
 }

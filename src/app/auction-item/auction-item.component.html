@@ -1,4 +1,7 @@
 <mat-card>
+  @if (isPromoted) {
+  <span class="star-icon">★</span>
+  }
   <img mat-card-image src="https://picsum.photos/200/300" alt="Auction Image" />
   <mat-card-content>
     <a
@@ -9,7 +12,7 @@
     </a>
     <p>Current price: {{ price }} $</p>
     @if (endDate) {
-      <p>Ending date: {{ endDate }} </p>
+    <p>Ending date: {{ endDate }}</p>
     }
   </mat-card-content>
   <mat-card-actions>
@@ -18,14 +21,13 @@
       <button mat-raised-button color="primary" (click)="onEdit()">Edit</button>
       <button mat-button (click)="onDelete()">Delete</button>
     </ng-container>
-    } 
-
-    @if(!isUserOwner) {
+    } @if(!isUserOwner) {
     <ng-container>
-      <button mat-raised-button color="primary" (click)="bidNow()">Bid Now</button>
+      <button mat-raised-button color="primary" (click)="bidNow()">
+        Bid Now
+      </button>
       <mat-icon (click)="toggleFavorite()"> favorite </mat-icon>
     </ng-container>
     }
-
   </mat-card-actions>
 </mat-card>

@@ -21,6 +21,7 @@ export class AuctionItemComponent implements OnInit {
   @Input() endDate: any | null = null;
   @Input() imageUrl!: string;
   @Input() userInfo: any | null = null;
+  @Input() isPromoted: boolean = false;
 
   isUserOwner: boolean = false;
 
