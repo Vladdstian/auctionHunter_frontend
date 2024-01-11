@@ -6,6 +6,7 @@ import { ParticipatedAuctionsComponent } from './participated-auctions/participa
 import { FavouriteAuctionsComponent } from './favourite-auctions/favourite-auctions.component';
 import { AddEditAuctionsComponent } from './add-edit-auctions/add-edit-auctions.component';
 import { HomeComponent } from './home/home.component';
+import { AuctionViewComponent } from './auction-view/auction-view.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent},
@@ -15,4 +16,5 @@ export const routes: Routes = [
     { path: 'participated',component: ParticipatedAuctionsComponent },
     { path: 'favourites',component: FavouriteAuctionsComponent },
     { path: 'add',component: AddEditAuctionsComponent },
+    { path: 'auction/:id', component: AuctionViewComponent },
 ];

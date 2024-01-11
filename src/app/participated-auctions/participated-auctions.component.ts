@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuctionListService } from '../services/auction-list.service';
+import { AuctionService } from '../services/auction.service';
 import { AuctionItemComponent } from '../auction-item/auction-item.component';
 
 @Component({
@@ -13,13 +13,13 @@ export class ParticipatedAuctionsComponent implements OnInit{
   auctions: any[] = [];
   userInfo: any;
 
-  constructor(private auctionListService: AuctionListService) {}
+  constructor(private auctionService: AuctionService) {}
 
   ngOnInit(): void {
     this.loadAuctions();
   }
 
   loadAuctions(): void {
-    this.auctions = this.auctionListService.getUserParticipatedAuctionList();
+    this.auctions = this.auctionService.getUserParticipatedAuctionList();
   }
 }

@@ -1,15 +1,43 @@
-<h2 class="auctions-title">Participated Auctions</h2>
-<div class="cards-container">
-  @for (auction of auctions; track $index) {
-  <div class="card-item">
-    <app-auction-item
-      [auctionId]="auction.id"
-      [title]="auction.title"
-      [price]="auction.price"
-      [endDate]="auction.endDate"
-      [imageUrl]="auction.imageUrl"
-    >
-    </app-auction-item>
+<div class="promoted-auctions-row">
+  <h2 class="promoted-auctions-title">Promoted Auctions</h2>
+  <div class="promoted-auctions-container">
+    <button mat-icon-button (click)="scrollLeft()">
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+    <div class="promoted-cards-container">
+      @for (auction of displayPromotedAuctionList; track $index) {
+      <div class="card-item">
+        <span class="star-icon">★</span>
+        <app-auction-item
+          [auctionId]="auction.id"
+          [title]="auction.title"
+          [price]="auction.price"
+          [endDate]="auction.endDate"
+          [imageUrl]="auction.imageUrl"
+        >
+        </app-auction-item>
+      </div>
+      }
+    </div>
+    <button mat-icon-button (click)="scrollRight()">
+      <mat-icon>chevron_right</mat-icon>
+    </button>
   </div>
-  }
+</div>
+<mat-divider></mat-divider>
+<div class="all-auction-container">
+  <div class="cards-container">
+    @for (auction of auctions; track $index) {
+    <div class="card-item">
+      <app-auction-item
+        [auctionId]="auction.id"
+        [title]="auction.title"
+        [price]="auction.price"
+        [endDate]="auction.endDate"
+        [imageUrl]="auction.imageUrl"
+      >
+      </app-auction-item>
+    </div>
+    }
+  </div>
 </div>

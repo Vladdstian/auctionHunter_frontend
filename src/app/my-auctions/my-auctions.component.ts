@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuctionService } from '../services/auction.service';
 import { AuthService } from '../services/auth.service';
-import { AuctionListService } from '../services/auction-list.service';
+import { AuctionService } from '../services/auction.service';
 import { AuctionItemComponent } from '../auction-item/auction-item.component';
 
 @Component({
@@ -15,13 +14,13 @@ export class MyAuctionsComponent implements OnInit {
   auctions: any[] = [];
   userInfo: any;
 
-  constructor(private auctionListService: AuctionListService) {}
+  constructor(private auctionService: AuctionService) {}
 
   ngOnInit(): void {
     this.loadAuctions();
   }
 
   loadAuctions(): void {
-    this.auctions = this.auctionListService.getUserCreatedAuctionList();
+    this.auctions = this.auctionService.getUserCreatedAuctionList();
   }
 }

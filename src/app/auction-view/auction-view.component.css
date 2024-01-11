@@ -1,0 +1,37 @@
+.container {
+    width: 100%;
+    max-width: 1200px; /* Or any max-width you prefer */
+    margin: auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.column {
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.left {
+    flex: 70%; /* 70% width */
+}
+
+.right {
+    flex: 30%; /* 30% width */
+}
+
+.sticky-box {
+    position: sticky;
+    top: 20px;
+}
+
+/* Responsive design for smaller screens */
+@media screen and (max-width: 768px) {
+    .column {
+        flex: 100%;
+    }
+}

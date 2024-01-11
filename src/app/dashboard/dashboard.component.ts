@@ -12,7 +12,7 @@ import { AuctionItemComponent } from '../auction-item/auction-item.component';
 import { Component, OnInit, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
-import { AuctionListService } from '../services/auction-list.service';
+import { AuctionService } from '../services/auction.service';
 
 
 
@@ -52,12 +52,12 @@ export class DashboardComponent implements OnInit {
   @ViewChild('favouritesCardsContainer') private favouritesCardsContainer!: ElementRef;
 
 
-  constructor(private authService: AuthService,private router: Router,private auctionListService: AuctionListService,) { } 
+  constructor(private authService: AuthService,private router: Router,private auctionService: AuctionService,) { } 
 
   ngOnInit(): void {
-    this.UserCreatedAuctionList = this.auctionListService.getUserCreatedAuctionList();
-    this.UserParticipatedAuctionList = this.auctionListService.getUserParticipatedAuctionList();
-    this.UserFavouritesAuctionList = this.auctionListService.getUserFavouritesAuctionList();
+    this.UserCreatedAuctionList = this.auctionService.getUserCreatedAuctionList();
+    this.UserParticipatedAuctionList = this.auctionService.getUserParticipatedAuctionList();
+    this.UserFavouritesAuctionList = this.auctionService.getUserFavouritesAuctionList();
     this.updateCardsPerView();
     this.updateDisplayLists();
     this.isUserLoggedIn = !!this.userInfo;
